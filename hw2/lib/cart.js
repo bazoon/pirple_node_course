@@ -45,6 +45,7 @@ const cart = {
                     });
 
                 }).catch(() => {
+                    // No Cart is found, create first position with id = 1
                     let item = Object.assign({}, cartObject, { id: 1 });
                     file.create('carts', email, {
                         email,
