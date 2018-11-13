@@ -199,24 +199,34 @@ let app = {
         cart.appendChild(t);
 
         let button = document.createElement('button');
-        button.addEventListener('click', this.postOrder.bind(this, button));
+        button.addEventListener('click', this.checkout.bind(this));
         button.innerText = 'Post order';
         cart.appendChild(button);
 
         this.saveCart(cartData);
     },
-    postOrder: function (button) {
+    checkout: function (e) {
+        e.preventDefault();
+        window.location = "checkout";
+    },
+    postOrder: function (button, e) {
+        e.preventDefault();
+
         const payload = {
             email: app.config.sessionToken.email,
         };
-        button.innerText = 'Posting order...';
+        
+        button.innerText = '...loading';
         app.client.request(undefined, 'api/orders', 'POST', undefined, payload).then((data) => {
             this.clearCart();
             this.updateCart();
+            button.innerText = 'Order complete';
+            debugger
+            button.setAttribute('disabled', true);
             alert(data.message);
         }).catch((e)=> {
-            button.innerText = 'Post order';
             alert(e);
+            button.innerText('Post order');
         });
     },
     saveCart: function (cart) {
@@ -229,7 +239,13 @@ let app = {
     clearCart: function () {
         app.cart = undefined;
         localStorage.removeItem('cart');
+    },
+    bindCheckout: function () {
+        const button = document.querySelector('.postOrder');
+        if (!button) return;
+        button.addEventListener('click', this.postOrder.bind(this, button));
     }
+
 
 };
 
@@ -237,6 +253,7 @@ app.init = function() {
     app.bindForm();
     app.readTokenFromStorage();
     app.bindLogout();
+    app.bindCheckout();
     app.renderMenu().then(() => {
         let cart = this.loadCart();
         if (cart) {

@@ -151,6 +151,25 @@ const router = {
             });
         }
     },
+    'checkout': {
+        get: function (data, callback) {
+            const templateData = {
+                'head.title': 'Place order',
+                'head.description': 'Order',
+                'body.class': 'order-place'
+            };
+
+            helpers.getTemplate('placeOrder', templateData).then((str) => {
+                helpers.addUniversalTemplates(str, templateData).then((page) => {
+                    callback(200, page, 'html');
+                }).catch((err) => {
+                    callback(500, undefined, 'html');
+                });
+            }).catch((err) => {
+                callback(500, undefined, 'html');
+            });
+        }
+    },
     hello: {
         post: function(data, callback) {
             callback(200, {
