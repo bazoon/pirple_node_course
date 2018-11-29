@@ -9,6 +9,7 @@ const helpers = require('./lib/helpers');
 const menu = require('./lib/menu');
 const orders = require('./lib/orders');
 const mailgun = require('./lib/mailgun');
+const cli = require('./lib/cli')
 
 // Application routes
 const router = {
@@ -406,4 +407,8 @@ let httpServer = http.createServer((req, res) => {
 httpServer.listen(config.httpPort, () => {
     console.log(`The HTTP server is running on port ${config.httpPort}`);
 });
+
+setTimeout(function () {
+    cli.init();
+}, 50);
 

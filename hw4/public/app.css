@@ -1,0 +1,98 @@
+.header {
+    box-sizing: border-box;
+    height: 80px;
+    background-color: orange;
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    align-items: center;
+}
+
+.wrapper {
+    
+    box-sizing: border-box;
+}
+
+
+.menu {
+    list-style-type: none;
+    display: flex;
+}
+
+.menu li {
+    margin-right: 16px;
+
+}
+
+.menu li:last-child {
+    margin-right: 0;
+}
+
+.logo img {
+    width: 60px;
+    border-radius: 50%;
+}
+
+.content {
+    min-height: calc(100vh - 80px - 80px - 16px);
+    box-sizing: border-box;
+    padding: 16px;
+}
+
+.copyright {
+    box-sizing: border-box;
+    height: 80px;
+    background-color: #786599;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 16px;
+}
+
+
+.field {
+    display: flex;
+    width: 400px;
+    justify-content: space-between;
+}
+
+.field:last-child {
+    margin-top: 20px;
+}
+
+.form-wrap {
+    
+    
+}
+
+.form-wrap input {
+    box-sizing: border-box;
+    width: 200px;
+    height: 20px;
+    padding: 4px;
+}
+
+input[type=submit] {
+    box-sizing: border-box;
+    width: 200px;
+    height: 20px;
+    padding: 4px;
+}
+
+.menu-container {
+    display: flex;
+    height: 100%;
+}
+
+.cart-wrap {
+    flex: 1;
+    
+}
+
+.menuBook {
+    flex: 1;
+}
+
+.cart-total {
+    font-weight: 700;
+}
