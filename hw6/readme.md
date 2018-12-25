@@ -1,9 +1,3 @@
-Homework assignment #1
+Homework assignment #6
 
-The Assignment:
-
-Please create a simple "Hello World" API. Meaning:
-
-1. It should be a RESTful JSON API that listens on a port of your choice. 
-
-2. When someone posts anything to the route /hello, you should return a welcome message, in JSON format. This message can be anything you want. 
+Of all the modules we just explored, the Cluster module is likely the most important for performance. In this homework assignment, please return to your "Hello World" API from the first homework assignment, and refactor it to run across all the cores of your machine (using the cluster module)
